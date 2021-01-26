@@ -1,0 +1,2 @@
+# studies
+my studies resource
