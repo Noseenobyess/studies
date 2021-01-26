@@ -1,0 +1,47 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /mallDemo
+
+spring:
+  application:
+    name: mall-demo
+  datasource:
+    name: mall-demo
+    url: jdbc:mysql://192.168.161.114:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: malldata
+    password: Admin@123
+    # 使用druid数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      initial-size: 5
+      min-idle: 5
+      max-idle: 20
+      max-wait-millis: 60000
+      time-between-eviction-runs-millis: 60000
+      validation-query: select 'x'
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      max-total: 20
+
+
+# mybatis 配置
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.studies.mall.mapper
+
+# 配置打印SQL
+logging:
+  level:
+    com.studies.mall.mapper: debug
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
