@@ -19,11 +19,7 @@ import java.lang.reflect.Method;
 @Slf4j
 public class TimeConsumeAspect {
 
-    @Pointcut("@annotation(com.studies.mall.common.consume.TimeConsumeLog)")
-    public void fun() {
-
-    }
-
+    //@Around("consume() || fun()")
     @Around("fun()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
@@ -34,10 +30,18 @@ public class TimeConsumeAspect {
         Long endTime = System.currentTimeMillis();
         Long costTime = endTime - startTime;
         String methodName=method.getDeclaringClass().getName()+"."+method.getName();
-        String methodDesc=timeConsumeLog.methodDesc();
+        String methodDesc = null;
+        if(timeConsumeLog!=null){
+            methodDesc=timeConsumeLog.methodDesc();
+        }
         log.info("methodName: {}, methodDesc: {} ==> 执行耗费: {}ms",methodName,methodDesc,costTime);
         return result;
     }
 
+    @Pointcut("@annotation(com.studies.mall.common.consume.TimeConsumeLog)")
+    public void fun() {}
+
+    /*@Pointcut("execution(public * com.studies.mall.service..*.*(..)) || execution(public * com.studies.mall.mapper..*.*(..))")
+    public void consume(){}*/
 }
 

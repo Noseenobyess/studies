@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RedisConfig redisConfig;
 
-    @Cacheable(value = "0", key = "'mall:user:'+#worknumber", unless = "#result==null")
-    @TimeConsumeLog(methodDesc = "queryUserInfo")
+    //@Cacheable(value = RedisConfig.REDIS_KEY_DATABASE, key = "'user:'+#worknumber", unless = "#result==null")
+    @TimeConsumeLog(methodDesc = "通过ID查询用户")
     @Override
     public UserDTO queryUserByWorknumber(Integer worknumber) {
         return userMapper.selectByPrimaryKey(worknumber);

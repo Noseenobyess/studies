@@ -17,7 +17,7 @@ public class RedisController {
     private RedisService redisService;
 
     @GetMapping("/add")
-    public void addRedis(@RequestParam("key") String key,@RequestParam("value") String value){
+    public void add(@RequestParam("key") String key,@RequestParam("value") String value){
         redisService.set(key,value);
     }
 
