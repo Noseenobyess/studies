@@ -13,7 +13,7 @@ import java.util.Date;
 @Slf4j
 public class SpringTask {
 
-    @Scheduled(cron = "0/10 * * ? * ?")
+    //@Scheduled(cron = "0/10 * * ? * ?")
     private void task(){
         log.info("定时任务执行-{}",DateUtil.format(new Date(),"yyyy-MM-dd HH:mm:ss"));
     }
