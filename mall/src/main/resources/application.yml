@@ -27,13 +27,13 @@ spring:
       max-total: 20
   redis:
     # Redis服务器地址
-    host: localhost
+    host: 192.168.161.114
     # Redis数据库索引（默认为0）
-    #database: 0
+    database: 0
     # Redis服务器连接端口
-    port: 6379
+    port: 6378
     # Redis服务器连接密码（默认为空）
-    password:
+    password: Admin@123
     # 连接超时时间
     #timeout: 1000ms
     # 连接池
