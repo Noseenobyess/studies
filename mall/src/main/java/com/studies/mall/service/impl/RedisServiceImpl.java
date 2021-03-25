@@ -1,12 +1,10 @@
 package com.studies.mall.service.impl;
 
-import com.studies.mall.common.consume.TimeConsumeLog;
 import com.studies.mall.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
